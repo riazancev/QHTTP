@@ -3,6 +3,8 @@
 
 #include <QtCore/qobject.h>
 
+#include <QtNetwork/qtcpserver.h>
+
 namespace QHTTP {
 
 class HttpServer;
@@ -14,10 +16,21 @@ class HttpServerPrivate : public QObject
 
     HttpServer *q;
 
+    QTcpServer *mServer;
+
+private slots:
+
+    void newConnection();
+
 public:
 
     explicit HttpServerPrivate(HttpServer *q, QObject *parent = Q_NULLPTR);
     ~HttpServerPrivate();
+
+public:
+
+    bool listen(const QHostAddress &address = QHostAddress::Any, quint16 port = 0);
+    void close();
 };
 
 }

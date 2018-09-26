@@ -26,10 +26,14 @@ CONFIG += depend_includepath
 
 HEADERS += include/QHTTP/global.h
 
+HEADERS += include/QHTTP/httpclient.h
 HEADERS += include/QHTTP/httpserver.h
 
+SOURCES += src/httpclient.cpp
 SOURCES += src/httpserver.cpp
 
+HEADERS += src/private/include/httpclient_p.h
 HEADERS += src/private/include/httpserver_p.h
 
+SOURCES += src/private/httpclient_p.cpp
 SOURCES += src/private/httpserver_p.cpp

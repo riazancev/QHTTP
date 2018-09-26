@@ -14,4 +14,14 @@ HttpServer::~HttpServer()
     delete d;
 }
 
+bool HttpServer::listen(const QHostAddress &address, quint16 port)
+{
+    return d->listen(address, port);
+}
+
+void HttpServer::close()
+{
+    d->close();
+}
+
 }

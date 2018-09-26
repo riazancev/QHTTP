@@ -6,7 +6,11 @@
 #include <QtCore/qcompilerdetection.h>
 #include <QtCore/qobject.h>
 
+#include <QtNetwork/qhostaddress.h>
+
 namespace QHTTP {
+
+class HttpClient;
 
 class HttpServerPrivate;
 
@@ -17,10 +21,19 @@ class QHTTP_API HttpServer : public QObject
 
     HttpServerPrivate *d;
 
+signals:
+
+    void newConnection(HttpClient *client);
+
 public:
 
     explicit HttpServer(QObject *parent = Q_NULLPTR);
     ~HttpServer();
+
+public:
+
+    bool listen(const QHostAddress &address = QHostAddress::Any, quint16 port = 0);
+    void close();
 };
 
 }
