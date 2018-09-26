@@ -15,6 +15,14 @@ HttpServerPrivate::~HttpServerPrivate()
 
 }
 
+HttpServerPrivate::HttpServerPrivate(QTcpServer *server, HttpServer *q, QObject *parent) : QObject(parent)
+{
+    this->q = q;
+
+    mServer = server;
+    connect(mServer, &QTcpServer::newConnection, this, &HttpServerPrivate::newConnection);
+}
+
 HttpServerPrivate::HttpServerPrivate(HttpServer *q, QObject *parent) : QObject(parent)
 {
     this->q = q;

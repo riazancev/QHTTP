@@ -23,7 +23,7 @@ class QHTTP_API HttpServer : public QObject
 
 signals:
 
-    void newConnection(HttpClient *client);
+    void newConnection(QHTTP::HttpClient *client);
 
 public:
 

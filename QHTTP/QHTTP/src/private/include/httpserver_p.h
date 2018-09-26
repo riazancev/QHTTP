@@ -24,7 +24,9 @@ private slots:
 
 public:
 
+    explicit HttpServerPrivate(QTcpServer *server, HttpServer *q, QObject *parent = Q_NULLPTR);
     explicit HttpServerPrivate(HttpServer *q, QObject *parent = Q_NULLPTR);
+
     ~HttpServerPrivate();
 
 public:
